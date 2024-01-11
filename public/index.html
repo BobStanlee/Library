@@ -24,40 +24,70 @@
         </div>
     </header>
 
-    <div class="flex flex-wrap justify-center gap-4 p-4"><!-- Library Container -->
+    <div class="grid grid-cols-3 p-8"><!-- Library Container -->
         <div class="flex flex-col rounded-md shadow-md hover:shadow-lg p-4 relative min-w-80 overflow-hidden"><!-- Library Card -->
-            <div class="flex gap-4 items-center mb-3">
+            <div class="flex gap-4 mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-red-600">
                 <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
               </svg>
               
-              <div class="flex flex-col">
+              <div class="flex flex-col gap-4">
                 <span id="title" class="font-medium text-xl">The Hobbit</span><!--Title of Book-->
-                <p id="author" class="font-light text-gray-400 text-xs ml-1">Bob J.R.R</p><!--Author of Book-->
+
+                <p id="author" class="font-light text-gray-600 text-base ml-1">Bob J.R.R</p><!--Author of Book-->
+
+                <div id="page" class="">Pages: 255</div><!--Number of Pages-->
               </div>
             </div>
             
-            <div id="progress" class="p-1 mx-5 flex flex-col mb-4"><!--Progress on Book-->
-              <span class="font-light text-xs text-gray-400 mb-1">Progress</span>
-              <div class="bg-gray-400 w-full mb-1">
-                <div id="bar" class="h-1 bg-red-600 w-1/4"></div><!--Progress - Bar-->
+            <!--
+              <div id="progress" class="p-1 mx-5 flex flex-col mb-4"><!--Progress on Book
+                <div>
+                  <span class="font-light text-xs text-gray-400 mb-1">Progress</span><span class="font-light text-xs text-red-600 ml-1">pg:64</span>
+                </div>
+                <div class="bg-gray-400 w-full mb-1">
+                  <div id="bar" class="h-1 bg-red-600 w-1/4"></div><!--Progress - Bar
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-light text-gray-400">0</span><!--Progress Start
+                  <span id="progress-end" class="font-light text-red-600 relative"><span class="text-xs pt-1 mr-1 text-gray-400">pages</span>255</span><!--Progress end
+                </div>
               </div>
-              <div class="flex justify-between">
-                <span class="font-light text-gray-400">0</span><!--Progress Start-->
-                <span id="progress-end" class="font-light text-red-600 relative"><span class="text-xs pt-1 mr-1 text-gray-400">pages</span>255</span><!--Progress end-->
-              </div>
-            </div>
+            -->
 
             <div id="inprogress" class="text-white bg-red-600 absolute top-0 right-0 p-2 rounded-bl-md">
               Progress
             </div>
 
-            <div id="delete" class="self-center p-3 rounded-full bg-gray-400 shadow-md hover:shadow-lg hover:scale-110"><!--Delete button-->
+            <div id="delete" class="self-end p-3 rounded-full bg-gray-400 shadow-md hover:shadow-lg hover:scale-110"><!--Delete button-->
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-red-600">
                 <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clip-rule="evenodd" />
               </svg>              
             </div>
         </div>
+    </div>
+
+    <div><!-- Form to add books -->
+      <form action="">
+        <fieldset>
+          <legend>Add Your Book</legend>
+          
+          <label for="title">Book Title</label>
+          <input type="text" name="title" placeholder="Title" required>
+
+          <label for="author">Book Author</label>
+          <input type="text" name="author" placeholder="Author" required>
+
+          <label for="page">Number of Pages</label>
+          <input type="number" name="page" placeholder="Number of Pages" required>
+
+          <h1>Reading Status</h1>
+          <label for="status">Have you read the Book?</label>
+          <input type="checkbox" name="status" value="read">
+          <label for="">Are you still reading the book?</label>
+          <input type="checkbox" name="status" value="read">
+        </fieldset>
+      </form>
     </div>
   </div>
   <script src="./index.js"></script>
