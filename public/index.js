@@ -14,6 +14,7 @@ const myLibrary = [
 openCloseForm();
 updateLibraryshelve(myLibrary);
 getInputs();
+deleteBtn();
 
 
 function Book(title, author, page, status, reading) {
@@ -113,6 +114,7 @@ function getInputs() {
     updateLibraryshelve(myLibrary);
 
     formInputs.reset();
+    deleteBtn();
   });
 }
 
@@ -280,13 +282,13 @@ function checkReading (book, div) {
 
 // Delete function
 function deleteBook(index) {
-  libraryData.splice(index, 1);
+  myLibrary.splice(index, 1);
 
   updateLibraryshelve(myLibrary);
 }
 
 // function delete button
-function deleteBtn (){
+function deleteBtn() {
   let allDeletebtn = document.querySelectorAll('.delete-btn');
 
   allDeletebtn.forEach(delBtn => {
@@ -294,7 +296,7 @@ function deleteBtn (){
       let card = delBtn.parentElement;
       let index = card.id;
 
-      deleteBook()
+      deleteBook(index);
     })
   })
 }
