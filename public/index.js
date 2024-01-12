@@ -105,12 +105,12 @@ function getInputs() {
     }
 
     addBookToLibrary(title, author, page, status, reading);
-    updateLibraryshelves(myLibrary);
+    updateLibraryshelve(myLibrary);
   });
 }
 
 // Function to handle and update library cards
-function updateLibraryshelves(library) {
+function updateLibraryshelve(library) {
 
   const libraryContainer = document.getElementById("library-container");
   libraryContainer.innerHTML = ""; // Clear all elements from Library Container
@@ -145,7 +145,7 @@ function createLibraryCard(book, index, libraryContainer) {
   cardInnerContainer.classList.add("flex", "gap-4", "mb-6");
 
   // book SVG markup 
-  let bookSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-red-600">
+  let bookSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-red-600" id="book-svg_${index}">
     <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
   </svg>`;
 
@@ -194,4 +194,40 @@ function createLibraryCard(book, index, libraryContainer) {
   titleAuthorPageContainer.appendChild(divPage); // append title as child
 
   cardInnerContainer.appendChild(titleAuthorPageContainer); // append title author page Container as child
+
+
+
+  // div element for Reading status
+  let readingDiv = document.createElement('div');
+  readingDiv.id = `reading-${index}`;
+  readingDiv.classList.add(
+    'text-white',
+    'bg-red-600',
+    'absolute',
+    'top-0',
+    'right-0',
+    'p-2',
+    'rounded-bl-md',
+    'motion-safe:animate-pulse'
+  )
+
+  
+}
+
+
+// function to check reading status of a book
+function checkReading (book, div) {
+    if (book.reading === 'reading') {
+        if (div.classList.contains('bg-orange-600')) {
+            div.classList.remove('bg-orange-600');
+            div.classList.add('bg-red-600');
+            div.content = book.reading;
+        }
+    } else if (book.reading === 'not started') {
+        if (div.classList.contains('bg-red-600')) {
+            div.classList.remove('bg-red-600');
+            div.classList.add('bg-orange-600');
+            div.content = book.reading
+        }
+    }
 }
