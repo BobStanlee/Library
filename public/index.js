@@ -4,7 +4,7 @@ const myLibrary = [
         author: 'Bob Stanley', 
         page: 255,
         status: 'read',
-        reading: 'active'
+        reading: 'reading'
     }
 ];
 
@@ -20,9 +20,9 @@ function Book(title, author, page, status, reading) {
   this.reading = reading
 }
 
-function addBookToLibrary(title='test', author='test', page=300, status='test', reading='active') {
+function addBookToLibrary(title='test', author='test', page=300, status='test', reading='reading') {
   // do stuff here
-  let newBook = new Book(title, author, page, status, active);
+  let newBook = new Book(title, author, page, status, reading);
 
   // add book to library
 
@@ -71,6 +71,7 @@ function getInputs () {
     let author = '';
     let page = 0;
     let status = '';
+    let reading = '';
     
     // listen for submit action
     formInputs.addEventListener('submit', (e) => {
@@ -80,15 +81,27 @@ function getInputs () {
         author = document.getElementById('author').value; // author
         page = document.getElementById('page').value; // page
 
+        // Logic for handling true and false values of the status checkbox
         let isStatusChecked = document.getElementById('status').checked;
+        
         if (isStatusChecked === true) {
             status = 'read';
         } else {
             status = 'not read';
         }// status
 
+        // Logic for handling true and false values of the reading checkbox
+        let isReadingChecked = document.getElementById('reading').checked;
+
+        if (isReadingChecked === true) {
+            reading = 'reading';
+        } else {
+            reading = 'not started';
+        }
         
-        addBookToLibrary(title, author, page, status);
+        addBookToLibrary(title, author, page, status, reading);
         console.log(myLibrary);
     })
 }
+
+//
