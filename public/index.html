@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
   <link href="./output.css" rel="stylesheet">
 </head>
 <body class="font-body">
-  <div class="pt-20 relative"><!-- Container -->
+  <div class="pt-20 relative md:overflow-hidden h-screen"><!-- Container -->
     <header class="flex fixed z-10 top-0 left-0 w-screen py-2 px-4 md:px-8 justify-between items-center h-20 shadow-md bg-white">
         <div class="flex items-center"><!--Logo goes here-->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><!--Logo img-->
@@ -17,26 +17,26 @@
             </svg>
             <h1 class="font-bold font-body ml-3 text-2xl">Stagbont Library</h1><!-- Logo text -->   
         </div>
-        <div class="cursor-pointer"><!-- Add btn -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <div class="cursor-pointer hover:scale-110 transition-all" id="addbtn"><!-- Add btn -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 transition-all">
                 <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
             </svg>  
         </div>
     </header>
 
-    <div class="grid content-center p-4 md:grid-cols-3 md:p-8"><!-- Library Container -->
-        <div class="flex flex-col rounded-md shadow-md hover:shadow-lg p-4 relative min-w-80 overflow-hidden hidden"><!-- Library Card -->
+    <div class="grid p-4 md:grid-cols-3 md:p-8"><!-- Library Container -->
+        <div class="flex flex-col rounded-md shadow-md hover:shadow-lg p-4 relative min-w-80 overflow-hidden transition-all"><!-- Library Card -->
             <div class="flex gap-4 mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-red-600">
                 <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
               </svg>
               
               <div class="flex flex-col gap-4">
-                <span id="title" class="font-medium text-xl">The Hobbit</span><!--Title of Book-->
+                <span class="font-medium text-xl">The Hobbit</span><!--Title of Book-->
 
-                <p id="author" class="font-light text-gray-600 text-base ml-1">Bob J.R.R</p><!--Author of Book-->
+                <p class="font-light text-gray-600 text-base ml-1">Bob J.R.R</p><!--Author of Book-->
 
-                <div id="page" class="">Pages: 255</div><!--Number of Pages-->
+                <div class="">Pages: 255</div><!--Number of Pages-->
               </div>
             </div>
             
@@ -55,11 +55,11 @@
               </div>
             -->
 
-            <div id="inprogress" class="text-white bg-red-600 absolute top-0 right-0 p-2 rounded-bl-md">
+            <div id="inprogress" class="text-white bg-red-600 absolute top-0 right-0 p-2 rounded-bl-md motion-safe:animate-pulse">
               Progress
             </div>
 
-            <div id="delete" class="self-end p-3 rounded-full bg-gray-400 shadow-md hover:shadow-lg hover:scale-110"><!--Delete button-->
+            <div id="delete" class="self-end p-3 rounded-full bg-gray-400 shadow-md hover:shadow-lg hover:scale-110 transition-all hover:ani"><!--Delete button-->
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-red-600">
                 <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clip-rule="evenodd" />
               </svg>              
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <div class="absolute top-20 right-0 bg-slate-600/80 h-svh w-full md:w-1/3"><!-- Form to add books -->
+    <div class="absolute top-20 -right-full bg-slate-600/95 h-svh w-full md:w-1/3 transition-all" id="form-container"><!-- Form to add books -->
       <form action="" class="m-5 flex flex-col">
         <fieldset class="flex flex-col gap-2">
           <legend class="text-center font-bold text-xl mb-5">Add Your Book</legend>

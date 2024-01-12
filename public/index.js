@@ -37,3 +37,27 @@ function isDuplicateBook(newBook) {
         book.title === newBook.title && book.author === newBook.author
     ));
 }
+
+// Function to handle Open and close functionality of the form modal
+function openCloseForm () {
+    const addBtn = document.getElementById('addbtn'),
+          formContainer = document.getElementById('form-container');
+          
+    addBtn.addEventListener('click', () => {
+        //close Form
+        if (addBtn.classList.contains('rotate-45')) {
+            addBtn.classList.remove('rotate-45');
+            formContainer.classList.add('-right-full');
+            formContainer.classList.remove('right-0');
+        } 
+        
+        //opens Form
+        else {
+            addBtn.classList.add('rotate-45');
+            formContainer.classList.add('right-0');
+            formContainer.classList.remove('-right-full')
+        }
+    })
+}
+
+openCloseForm();
