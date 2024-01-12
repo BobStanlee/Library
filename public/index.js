@@ -104,8 +104,10 @@ function getInputs() {
       reading = "not started";
     }
 
+    console.log(reading);
+
     addBookToLibrary(title, author, page, status, reading);
-    updateLibraryshelve(myLibrary);
+    // updateLibraryshelve(myLibrary);
   });
 }
 
@@ -211,6 +213,8 @@ function createLibraryCard(book, index, libraryContainer) {
     'motion-safe:animate-pulse'
   )
 
+  checkReading(book, readingDiv);
+  console.log(readingDiv, readingDiv.textContent);
   
 }
 
@@ -222,12 +226,26 @@ function checkReading (book, div) {
             div.classList.remove('bg-orange-600');
             div.classList.add('bg-red-600');
             div.content = book.reading;
+            console.log(book.reading);
+        } else {
+            div.classList.add('bg-red-600');
+            div.content = book.reading;
+            console.log(book.reading);
         }
-    } else if (book.reading === 'not started') {
+    } 
+    
+    else if (book.reading === 'not started') {
         if (div.classList.contains('bg-red-600')) {
             div.classList.remove('bg-red-600');
             div.classList.add('bg-orange-600');
             div.content = book.reading
+            console.log(book.reading);
+        } else {
+            div.classList.add('bg-orange-600');
+            div.content = book.reading
+            console.log(book.reading);
         }
     }
 }
+
+let textDiv = document.getElementById('inprogress');
