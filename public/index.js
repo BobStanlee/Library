@@ -10,6 +10,9 @@ const myLibrary = [
 
 // Run Functions
 openCloseForm();
+updateLibraryshelve(myLibrary);
+getInputs();
+
 
 function Book(title, author, page, status, reading) {
   // the constructor...
@@ -104,10 +107,10 @@ function getInputs() {
       reading = "not started";
     }
 
-    console.log(reading);
-
     addBookToLibrary(title, author, page, status, reading);
-    // updateLibraryshelve(myLibrary);
+    updateLibraryshelve(myLibrary);
+
+    formInputs.reset();
   });
 }
 
@@ -134,13 +137,13 @@ function createLibraryCard(book, index, libraryContainer) {
     "hover:shadow-lg",
     "p-4",
     "relative",
-    "min-w-80",
+    "w-96",
     "overflow-hidden",
-    "transition-all"
+    "transition-all",
+    "max-w"
   );
 
-  libraryCard.id = index;
-  console.log(libraryCard.id);
+  libraryCard.id = index; //add id of current index
 
   // Inner Container of the Library Card
   let cardInnerContainer = document.createElement("div");
@@ -213,9 +216,34 @@ function createLibraryCard(book, index, libraryContainer) {
     'motion-safe:animate-pulse'
   )
 
+  // call checkReading Function
   checkReading(book, readingDiv);
-  console.log(readingDiv, readingDiv.textContent);
-  
+
+  // div element for delete
+  let deleteBtn = document.createElement('div');
+  deleteBtn.classList.add(
+    'self-end',
+    'p-3',
+    'rounded-full',
+    'bg-gray-400',
+    'shadow-md',
+    'hover:shadow-lg', 
+    'hover:scale-110',
+    'transition-all',
+    'hover:ani'
+  )
+
+  let deleteSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-red-600">
+                <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clip-rule="evenodd" />
+              </svg>`;
+
+  deleteBtn.innerHTML = deleteSvg;
+
+  libraryCard.appendChild(cardInnerContainer); //append cardInnerContainer as a child
+  libraryCard.appendChild(readingDiv); //append readingDiv as a child
+  libraryCard.appendChild(deleteBtn); //append deleteBtn as a child
+
+  libraryContainer.appendChild(libraryCard);
 }
 
 
@@ -225,12 +253,10 @@ function checkReading (book, div) {
         if (div.classList.contains('bg-orange-600')) {
             div.classList.remove('bg-orange-600');
             div.classList.add('bg-red-600');
-            div.content = book.reading;
-            console.log(book.reading);
+            div.textContent = book.reading;
         } else {
             div.classList.add('bg-red-600');
-            div.content = book.reading;
-            console.log(book.reading);
+            div.textContent = book.reading;
         }
     } 
     
@@ -238,12 +264,10 @@ function checkReading (book, div) {
         if (div.classList.contains('bg-red-600')) {
             div.classList.remove('bg-red-600');
             div.classList.add('bg-orange-600');
-            div.content = book.reading
-            console.log(book.reading);
+            div.textContent = book.reading
         } else {
             div.classList.add('bg-orange-600');
-            div.content = book.reading
-            console.log(book.reading);
+            div.textContent = book.reading
         }
     }
 }
