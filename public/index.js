@@ -4,23 +4,27 @@ const myLibrary = [
         author: 'Bob Stanley', 
         page: 255,
         status: 'read',
+        reading: 'active'
     }
 ];
 
-function Book(title, author, page, status) {
+// Run Functions
+openCloseForm();
+
+function Book(title, author, page, status, reading) {
   // the constructor...
   this.title = title,
   this.author = author,
   this.page = page,
-  this.status = status
+  this.status = status,
+  this.reading = reading
 }
 
-function addBookToLibrary(title='test', author='test', page=300, status='test') {
+function addBookToLibrary(title='test', author='test', page=300, status='test', reading='active') {
   // do stuff here
-  let newBook = new Book(title, author, page, status);
+  let newBook = new Book(title, author, page, status, active);
 
   // add book to library
-  console.log(myLibrary); // log before library was updated
 
   if (!isDuplicateBook(newBook)) {
     myLibrary.push(newBook);
@@ -60,4 +64,31 @@ function openCloseForm () {
     })
 }
 
-openCloseForm();
+// Function to get form inputs
+function getInputs () {
+    const formInputs = document.getElementById('add-form');
+    let title = '';
+    let author = '';
+    let page = 0;
+    let status = '';
+    
+    // listen for submit action
+    formInputs.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        title = document.getElementById('title').value; // title
+        author = document.getElementById('author').value; // author
+        page = document.getElementById('page').value; // page
+
+        let isStatusChecked = document.getElementById('status').checked;
+        if (isStatusChecked === true) {
+            status = 'read';
+        } else {
+            status = 'not read';
+        }// status
+
+        
+        addBookToLibrary(title, author, page, status);
+        console.log(myLibrary);
+    })
+}
